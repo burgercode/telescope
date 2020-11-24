@@ -40,6 +40,8 @@ class CreateTelescopeEntriesTable extends Migration
      */
     public function up()
     {
+        \Illuminate\Support\Facades\DB::statement('SET SESSION sql_require_primary_key=0'); // This is to fix a bug with DO https://github.com/laravel/framework/issues/33238
+        
         $this->schema->create('telescope_entries', function (Blueprint $table) {
             $table->bigIncrements('sequence');
             $table->uuid('uuid');
